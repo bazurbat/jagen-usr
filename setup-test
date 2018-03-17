@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eu
+
+usr=$(dirname "$0")
+jagen_dir="$1"
+
+setup_product() {
+    local product="${1:-}"; shift
+    rm -rf "$product"
+    echo "setup $product"
+    (
+        mkdir -p "$product"; cd "$product"
+        "$jagen_dir/init-project" -i "$usr" "$@"
+        cp -a "include" "include.orig"
+        cp -a "build/build.ninja" "build/build.ninja.orig"
+        . ./env.sh
+        jagen list packages > list.packages.txt
+        cp -a list.packages.txt list.packages.txt.orig
+    )
+}
+
+setup_product ast-sigma-firmware base vendor/ast sdk/sigma product/ast-sigma-firmware
+setup_product ast-hi-linux base vendor/ast sdk/hi-linux product/ast-hi-linux
+setup_product genivi base vendor/genivi
