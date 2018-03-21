@@ -2,6 +2,7 @@
 
 set -eu
 
+lib=$(dirname "$0")/../jagen-lib
 usr=$(dirname "$0")
 products="ast-sigma-firmware ast-hi-linux genivi"
 
@@ -11,7 +12,7 @@ setup_product() {
     echo "setup $product"
     (
         mkdir -p "$product"; cd "$product"
-        "$jagen_dir/init" -i "$usr" "$@"
+        "$jagen_dir/init" -i "$usr" "$lib" "$@"
         cp -a "build/build.ninja" "build/build.ninja.orig"
         cp -a "include" "include.orig"
         . ./env.sh
@@ -44,9 +45,9 @@ check_product() {
 case $1 in
     setup)
         jagen_dir="$2"
-        setup_product ast-sigma-firmware base vendor/ast sdk/sigma product/ast-sigma-firmware
-        setup_product ast-hi-linux base vendor/ast sdk/hi-linux product/ast-hi-linux
-        setup_product genivi base vendor/genivi
+        setup_product ast-sigma-firmware vendor/ast sdk/sigma product/ast-sigma-firmware
+        setup_product ast-hi-linux vendor/ast sdk/hi-linux product/ast-hi-linux
+        setup_product genivi vendor/genivi
         ;;
     refresh)
         for product in $products; do
