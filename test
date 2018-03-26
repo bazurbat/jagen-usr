@@ -12,7 +12,7 @@ setup_product() {
     echo "setup $product"
     (
         mkdir -p "$product"; cd "$product"
-        "$jagen_dir/init" -i "$usr" "$lib" "$@"
+        "$jagen_dir/init" -L "$usr" "$lib" "$@"
         cp -a "build/build.ninja" "build/build.ninja.orig"
         cp -a "include" "include.orig"
         . ./env.sh
