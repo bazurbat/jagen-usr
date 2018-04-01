@@ -9,7 +9,7 @@ return {
     },
     build = {
         arch   = 'mips',
-        system = 'mipsel-linux-gnu',
+        system = 'mips-linux-gnu',
         cpu    = '24kf',
         cflags = '-march=24kf -mtune=24kf -Wa,-mips32r2',
         toolchain = false
