@@ -38,6 +38,7 @@ package { 'karaoke-player', 'target',
 }
 
 package { 'hi-utils', 'target',
+    template = firmware_template_rule,
     requires = { 'karaoke-player' }
 }
 
@@ -87,6 +88,7 @@ package { 'loop-aes',
 -- explicit definition of firmware utils to avoid building gpgme for host
 package { 'firmware-utils', 'host' }
 package { 'firmware-utils', 'target',
+    template = rootfs_template_rule,
     requires = { 'gpgme' }
 }
 
@@ -104,4 +106,21 @@ if Jagen.flag 'debug' then
     package { 'gdbserver', 'target' }
 end
 
-require 'chicken'
+package { 'chicken', 'host' }
+
+package { 'chicken-eggs', 'host' }
+
+package { 'chicken', 'target',
+    { 'configure', { 'chicken', 'install', 'host' } }
+}
+
+package { 'chicken-eggs', 'target',
+    template = firmware_template_rule,
+    requires = {
+        'dbus',
+        'sqlite',
+    },
+    { 'configure',
+        { 'chicken-eggs', 'install', 'host' }
+    }
+}

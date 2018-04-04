@@ -101,6 +101,7 @@ package { 'busybox', 'target',
 }
 
 package { 'utils', 'target',
+    template = rootfs_template,
     requires = { 'gpgme' },
     { 'configure',
         { 'dbus', 'install', 'target' }
@@ -163,6 +164,21 @@ package { 'karaoke-player',
     use = { 'mrua', 'rootfs' }
 }
 
--- additional packages should come last to apply all templates defined here
+package { 'chicken', 'host' }
 
-require 'chicken'
+package { 'chicken-eggs', 'host' }
+
+package { 'chicken', 'target',
+    { 'configure', { 'chicken', 'install', 'host' } }
+}
+
+package { 'chicken-eggs', 'target',
+    template = firmware_rule_template,
+    requires = {
+        'dbus',
+        'sqlite',
+    },
+    { 'configure',
+        { 'chicken-eggs', 'install', 'host' }
+    }
+}
