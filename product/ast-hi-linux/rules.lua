@@ -42,12 +42,12 @@ package { 'hi-utils', 'target',
 }
 
 package { 'firmware', 'target',
-    pass_template = firmware_template_rule,
     { 'compile',
         { 'rootfs', 'compile', 'target' }
     },
     { 'install',
         requires = {
+            template = firmware_template_rule,
             'hi-utils',
             'hostapd',
             'karaoke-player',
@@ -57,9 +57,9 @@ package { 'firmware', 'target',
 }
 
 package { 'rootfs', 'target',
-    pass_template = rootfs_template_rule,
     { 'install',
         requires = {
+            template = rootfs_template_rule,
             'ast-files',
             'busybox',
             'dropbear',

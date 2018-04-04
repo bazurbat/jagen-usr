@@ -72,13 +72,13 @@ local rootfs_template = {
 }
 
 package { 'rootfs', 'target',
-    pass_template = rootfs_template,
     { 'configure',
         { 'ast-files', 'unpack' },
         { 'xsdk',      'unpack' },
     },
     { 'install',
         requires = {
+            template = rootfs_template,
             'busybox',
             'gnupg',
             'loop-aes',
@@ -121,15 +121,10 @@ local firmware_rule_template = {
     { 'install', { 'firmware', 'unpack' } }
 }
 
-local function firmware_package(r)
-    r.template = firmware_rule_template
-    return package(r)
-end
-
 package { 'firmware', 'target',
-    pass_template = firmware_rule_template,
     use = 'mrua',
     requires = {
+        template = firmware_rule_template,
         'ezboot',
         'karaoke-player',
         'mrua',
@@ -146,7 +141,8 @@ package { 'firmware', 'target',
     }
 }
 
-firmware_package { 'karaoke-player',
+package { 'karaoke-player',
+    template = firmware_rule_template,
     requires = {
         'chicken-eggs',
         'connman',
