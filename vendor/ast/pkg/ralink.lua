@@ -19,5 +19,5 @@ return {
     install = {
         module_dirs = { 'os/linux' }
     },
-    use = { 'kernel', 'rootfs' }
+    uses = { 'kernel', 'rootfs' }
 }

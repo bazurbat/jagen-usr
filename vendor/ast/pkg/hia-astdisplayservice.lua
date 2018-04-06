@@ -9,5 +9,5 @@ return {
     requires = {
         'karaoke-player'
     },
-    use = 'hi-sdk'
+    uses = 'hi-sdk'
 }

@@ -82,7 +82,7 @@ package { 'rootfs', 'target',
 }
 
 package { 'loop-aes',
-    use = { 'kernel' },
+    uses = { 'kernel' },
 }
 
 -- explicit definition of firmware utils to avoid building gpgme for host

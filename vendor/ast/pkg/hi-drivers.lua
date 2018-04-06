@@ -7,7 +7,7 @@ return {
         type = 'linux-module',
         in_source = true
     },
-    use = 'kernel',
+    uses = 'kernel',
     -- hardcodes paths to SDK include dirs in Makefile
     { 'compile',
         { 'hi-sdk', 'unpack' }

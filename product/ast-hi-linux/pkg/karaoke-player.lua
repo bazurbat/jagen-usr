@@ -9,5 +9,5 @@ return {
     requires = {
         'cmake-modules'
     },
-    use = 'hi-sdk'
+    uses = 'hi-sdk'
 }

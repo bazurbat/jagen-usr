@@ -15,5 +15,5 @@ return {
         unset_cflags = true,
         kernel_modules = true
     },
-    use = 'kernel'
+    uses = 'kernel'
 }

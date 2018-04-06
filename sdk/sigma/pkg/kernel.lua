@@ -12,7 +12,7 @@ return {
     env = {
         LINUX_KERNEL = '$pkg_source_dir/linux'
     },
-    use = { 'ezboot', 'rootfs', 'xsdk' },
+    uses = { 'ezboot', 'rootfs', 'xsdk' },
     export = {
         release = '$pkg_build_release',
         env = {

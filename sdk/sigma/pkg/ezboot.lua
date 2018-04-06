@@ -8,5 +8,5 @@ return {
         type = 'sigma',
         in_source = true
     },
-    use = { 'rootfs', 'xsdk' }
+    uses = { 'rootfs', 'xsdk' }
 }

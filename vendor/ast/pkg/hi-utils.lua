@@ -11,5 +11,5 @@ return {
         'glib',
         'hi-sdk',
     },
-    use = 'hi-sdk'
+    uses = 'hi-sdk'
 }

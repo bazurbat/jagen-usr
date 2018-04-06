@@ -56,7 +56,7 @@ package { 'kernel', 'target',
 }
 
 package { 'loop-aes',
-    use = { 'kernel', 'rootfs' },
+    uses = { 'kernel', 'rootfs' },
     env = {
         INSTALL_MOD_PATH = '$rootfs_root'
     },
@@ -92,7 +92,7 @@ package { 'rootfs', 'target',
 }
 
 package { 'busybox', 'target',
-    use = 'rootfs',
+    uses = 'rootfs',
     install = {
         root = '$rootfs_root',
         prefix = ''
@@ -123,7 +123,7 @@ local firmware_rule_template = {
 }
 
 package { 'firmware', 'target',
-    use = 'mrua',
+    uses = 'mrua',
     requires = {
         template = firmware_rule_template,
         'ezboot',
@@ -161,7 +161,7 @@ package { 'karaoke-player',
         { 'astindex', 'unpack' },
         { 'chicken-eggs', 'install', 'host' }
     },
-    use = { 'mrua', 'rootfs' }
+    uses = { 'mrua', 'rootfs' }
 }
 
 package { 'chicken', 'host' }

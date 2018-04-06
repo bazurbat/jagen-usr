@@ -7,5 +7,5 @@ return {
         type = true,
         dir = '$jagen_target_dir'
     },
-    use = 'hi-sdk'
+    uses = 'hi-sdk'
 }
