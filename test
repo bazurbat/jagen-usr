@@ -16,8 +16,8 @@ setup_product() {
         cp -a "build/build.ninja" "build/build.ninja.orig"
         cp -a "include" "include.orig"
         . ./env.sh
-        jagen list packages > list.packages.txt
-        cp -a list.packages.txt list.packages.txt.orig
+        # jagen list packages -ad > list.packages.txt
+        # cp -a list.packages.txt list.packages.txt.orig
     )
 }
 
@@ -26,6 +26,7 @@ refresh_product() {
         cd $1
         . ./env.sh
         jagen refresh
+        # jagen list packages -ad > list.packages.txt
     )
 }
 
@@ -36,9 +37,9 @@ check_product() {
         cd "$name"
         diff -u build/build.ninja.orig build/build.ninja || true
         diff -u include.orig include || true
-        if [ -f list.packages.txt.orig ] && [ -f list.packages.txt ]; then
-            diff -u list.packages.txt.orig list.packages.txt || true
-        fi
+        # if [ -f list.packages.txt.orig ] && [ -f list.packages.txt ]; then
+        #     diff -u list.packages.txt.orig list.packages.txt || true
+        # fi
     )
 }
 
@@ -47,7 +48,7 @@ case $1 in
         jagen_dir="$2"
         setup_product ast-sigma-firmware vendor/ast sdk/sigma product/ast-sigma-firmware
         setup_product ast-hi-linux vendor/ast sdk/hi-linux product/ast-hi-linux
-        setup_product genivi vendor/genivi
+        setup_product genivi vendor/genivi product/genivi
         ;;
     refresh)
         for product in $products; do
