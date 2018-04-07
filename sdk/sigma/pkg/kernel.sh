@@ -64,7 +64,7 @@ jagen_pkg_image() {
     local image_dir="$jagen_target_dir/kernel-image"
     local image="$jagen_target_dir/zbimage-linux-xload"
     # for zeropad.bash
-    add_PATH "${xsdk_dir:?}/xbin"
+    add_PATH "${xsdk_source_dir:?}/xbin"
 
     pkg_run rm -rf "$image_dir"
     pkg_run mkdir -p "$image_dir" "$image_dir/romfs"
@@ -84,6 +84,6 @@ jagen_pkg_image() {
 
     pkg_run genromfs -V MIPSLINUX_XLOAD -d romfs -f "$image"
 
-    pkg_run "${ezboot_dir:?}/protector/zbprotector" "$image" "${image}.zbc"
+    pkg_run "${ezboot_source_dir:?}/protector/zbprotector" "$image" "${image}.zbc"
     pkg_run chmod 644 "${image}.zbc"
 }

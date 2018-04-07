@@ -8,7 +8,7 @@ export RMCFLAGS="$RMCFLAGS \
 jagen_pkg_compile() {
     add_PATH "${toolchain_source_dir:?}/bin"
     # for zeropad.bash, toh.bash, etc.
-    add_PATH "${xsdk_dir:?}/xbin"
+    add_PATH "${xsdk_source_dir:?}/xbin"
     # for genxenv2
     add_PATH "${rootfs_prefix:?}/bin"
 
