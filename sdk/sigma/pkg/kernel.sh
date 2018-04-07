@@ -31,7 +31,7 @@ jagen_pkg_compile() {
         pkg_run $CROSS_MAKE all
     fi
 
-    pkg_run $CROSS_MAKE -C "${ezboot_dir:?}/protector"
+    pkg_run $CROSS_MAKE -C "${ezboot_source_dir:?}/protector"
 }
 
 get_start_addr() {
