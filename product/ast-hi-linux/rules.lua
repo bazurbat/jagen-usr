@@ -1,14 +1,12 @@
 -- HiSilicon Linux SDK
 
-local rootfs_template_rule = {
-    config = 'target',
+template { 'rootfs_package',
     { 'install',
         { 'rootfs', 'compile', 'target' }
     }
 }
 
-local firmware_template_rule = {
-    config = 'target',
+template { 'firmware_package',
     install = {
         prefix = '/usr'
     },
@@ -24,7 +22,7 @@ package { 'hi-sdk', 'target',
 }
 
 package { 'karaoke-player', 'target',
-    template = firmware_template_rule,
+    include = 'firmware_package',
     requires = {
         'chicken-eggs',
         'connman',
@@ -38,7 +36,7 @@ package { 'karaoke-player', 'target',
 }
 
 package { 'hi-utils', 'target',
-    template = firmware_template_rule,
+    include = 'firmware_package',
     requires = { 'karaoke-player' }
 }
 
@@ -48,7 +46,7 @@ package { 'firmware', 'target',
     },
     { 'install',
         requires = {
-            template = firmware_template_rule,
+            include = 'firmware_package',
             'hi-utils',
             'hostapd',
             'karaoke-player',
@@ -60,7 +58,7 @@ package { 'firmware', 'target',
 package { 'rootfs', 'target',
     { 'install',
         requires = {
-            template = rootfs_template_rule,
+            include = 'rootfs_package',
             'ast-files',
             'busybox',
             'dropbear',
@@ -88,7 +86,7 @@ package { 'loop-aes',
 -- explicit definition of firmware utils to avoid building gpgme for host
 package { 'firmware-utils', 'host' }
 package { 'firmware-utils', 'target',
-    template = rootfs_template_rule,
+    include = 'rootfs_package',
     requires = { 'gpgme' }
 }
 
@@ -115,7 +113,7 @@ package { 'chicken', 'target',
 }
 
 package { 'chicken-eggs', 'target',
-    template = firmware_template_rule,
+    include = 'firmware_package',
     requires = {
         'dbus',
         'sqlite',

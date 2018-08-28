@@ -64,8 +64,7 @@ package { 'loop-aes',
 
 -- rootfs
 
-local rootfs_template = {
-    config = 'target',
+template { 'rootfs_package',
     { 'install',
         { 'rootfs', 'compile', 'target' }
     }
@@ -78,7 +77,7 @@ package { 'rootfs', 'target',
     },
     { 'install',
         requires = {
-            template = rootfs_template,
+            include = 'rootfs_package',
             'busybox',
             'gnupg',
             'loop-aes',
@@ -101,7 +100,7 @@ package { 'busybox', 'target',
 }
 
 package { 'utils', 'target',
-    template = rootfs_template,
+    include = 'rootfs_package',
     requires = { 'gpgme' },
     { 'configure',
         { 'dbus', 'install', 'target' }
@@ -114,8 +113,7 @@ package { 'ezboot', 'target',
 
 -- firmware
 
-local firmware_rule_template = {
-    config = 'target',
+template { 'firmware_package',
     install = {
         prefix = '/firmware'
     },
@@ -125,7 +123,7 @@ local firmware_rule_template = {
 package { 'firmware', 'target',
     uses = 'mrua',
     requires = {
-        template = firmware_rule_template,
+        include = 'firmware_package',
         'ezboot',
         'karaoke-player',
         'mrua',
@@ -142,8 +140,8 @@ package { 'firmware', 'target',
     }
 }
 
-package { 'karaoke-player',
-    template = firmware_rule_template,
+package { 'karaoke-player', 'target',
+    include = 'firmware_package',
     requires = {
         'chicken-eggs',
         'connman',
@@ -173,7 +171,7 @@ package { 'chicken', 'target',
 }
 
 package { 'chicken-eggs', 'target',
-    template = firmware_rule_template,
+    include = 'firmware_package',
     requires = {
         'dbus',
         'sqlite',
