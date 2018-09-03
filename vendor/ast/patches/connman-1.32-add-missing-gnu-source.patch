@@ -1,0 +1,11 @@
+diff -ru connman-1.32.orig/src/nat.c connman-1.32/src/nat.c
+--- connman-1.32.orig/src/nat.c	2016-04-18 10:04:30.000000000 +0300
++++ connman-1.32/src/nat.c	2016-06-27 19:00:26.212695152 +0300
+@@ -24,6 +24,7 @@
+ #include <config.h>
+ #endif
+ 
++#define _GNU_SOURCE
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>

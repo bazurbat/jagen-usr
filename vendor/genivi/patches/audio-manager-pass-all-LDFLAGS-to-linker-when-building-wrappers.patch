@@ -1,0 +1,35 @@
+From ffca07d7d8d43bdeea519c9290c9b11aef59eac8 Mon Sep 17 00:00:00 2001
+From: Oleg Kolosov <bazurbat@gmail.com>
+Date: Thu, 9 Feb 2017 14:04:27 +0100
+Subject: [PATCH] pass all LDFLAGS to linker when building wrappers
+
+---
+ AudioManagerUtilities/CMakeLists.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/AudioManagerUtilities/CMakeLists.txt b/AudioManagerUtilities/CMakeLists.txt
+index 98abc69..ab4b8e3 100644
+--- a/AudioManagerUtilities/CMakeLists.txt
++++ b/AudioManagerUtilities/CMakeLists.txt
+@@ -64,7 +64,7 @@ IF (WITH_DBUS_WRAPPER)
+ 
+ 	set (AUDIO_MANAGER_UTILITIES_LIBS
+ 		${AUDIO_MANAGER_UTILITIES_LIBS}
+-		${DBUS_LIBRARIES}
++		${DBUS_LDFLAGS}
+ 		CACHE INTERNAL "AUDIO_MANAGER_UTILITIES_LIBS libs" FORCE)
+ 
+    	set(AUDIO_MANAGER_UTILITIES_SRCS_CXX
+@@ -77,8 +77,7 @@ IF (WITH_CAPI_WRAPPER)
+ 
+     	set(AUDIO_MANAGER_UTILITIES_LIBS
+         	${AUDIO_MANAGER_UTILITIES_LIBS}
+-       		${COMMONAPI_LIBRARIES}
+-        	${COMMONAPI_DBUS_LIBRARIES}
++		${COMMONAPI_LDFLAGS}
+ 		CACHE INTERNAL "AUDIO_MANAGER_UTILITIES_LIBS libs" FORCE)
+ 
+ 	set(AUDIO_MANAGER_UTILITIES_SRCS_CXX
+-- 
+2.10.2
+
