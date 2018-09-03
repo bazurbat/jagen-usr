@@ -22,7 +22,7 @@ package { 'hi-sdk', 'target',
 }
 
 package { 'karaoke-player', 'target',
-    include = 'firmware_package',
+    template = 'firmware_package',
     requires = {
         'chicken-eggs',
         'connman',
@@ -36,7 +36,7 @@ package { 'karaoke-player', 'target',
 }
 
 package { 'hi-utils', 'target',
-    include = 'firmware_package',
+    template = 'firmware_package',
     requires = { 'karaoke-player' }
 }
 
@@ -46,7 +46,7 @@ package { 'firmware', 'target',
     },
     { 'install',
         requires = {
-            include = 'firmware_package',
+            template = 'firmware_package',
             'hi-utils',
             'hostapd',
             'karaoke-player',
@@ -58,7 +58,7 @@ package { 'firmware', 'target',
 package { 'rootfs', 'target',
     { 'install',
         requires = {
-            include = 'rootfs_package',
+            template = 'rootfs_package',
             'ast-files',
             'busybox',
             'dropbear',
@@ -86,7 +86,7 @@ package { 'loop-aes',
 -- explicit definition of firmware utils to avoid building gpgme for host
 package { 'firmware-utils', 'host' }
 package { 'firmware-utils', 'target',
-    include = 'rootfs_package',
+    template = 'rootfs_package',
     requires = { 'gpgme' }
 }
 
@@ -113,7 +113,7 @@ package { 'chicken', 'target',
 }
 
 package { 'chicken-eggs', 'target',
-    include = 'firmware_package',
+    template = 'firmware_package',
     requires = {
         'dbus',
         'sqlite',

@@ -77,7 +77,7 @@ package { 'rootfs', 'target',
     },
     { 'install',
         requires = {
-            include = 'rootfs_package',
+            template = 'rootfs_package',
             'busybox',
             'gnupg',
             'loop-aes',
@@ -100,7 +100,7 @@ package { 'busybox', 'target',
 }
 
 package { 'utils', 'target',
-    include = 'rootfs_package',
+    template = 'rootfs_package',
     requires = { 'gpgme' },
     { 'configure',
         { 'dbus', 'install', 'target' }
@@ -123,7 +123,7 @@ template { 'firmware_package',
 package { 'firmware', 'target',
     uses = 'mrua',
     requires = {
-        include = 'firmware_package',
+        template = 'firmware_package',
         'ezboot',
         'karaoke-player',
         'mrua',
@@ -141,7 +141,7 @@ package { 'firmware', 'target',
 }
 
 package { 'karaoke-player', 'target',
-    include = 'firmware_package',
+    template = 'firmware_package',
     requires = {
         'chicken-eggs',
         'connman',
@@ -171,7 +171,7 @@ package { 'chicken', 'target',
 }
 
 package { 'chicken-eggs', 'target',
-    include = 'firmware_package',
+    template = 'firmware_package',
     requires = {
         'dbus',
         'sqlite',
