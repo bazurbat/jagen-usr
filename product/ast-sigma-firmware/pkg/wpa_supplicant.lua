@@ -5,7 +5,7 @@ return {
         sha256sum = 'e0d8b8fd68a659636eaba246bb2caacbf53d22d53b2b6b90eb4b4fef0993c8ed'
     },
     patches = {
-        { 'wpa_supplicant-2.2-do-not-call-dbus-functions-with-NULL-path', 1 }
+        { 'wpa_supplicant-2.2-do-not-call-dbus-functions-with-NULL-path.patch', 1 }
     },
     build = {
         type = 'make',
