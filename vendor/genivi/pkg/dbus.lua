@@ -5,12 +5,12 @@ return {
         sha256sum = '23238f70353e38ce5ca183ebc9525c0d97ac00ef640ad29cf794782af6e6a083'
     },
     patches = {
-        { 'capi-dbus-1-pc.patch',                                            1 },
-        { 'capi-dbus-add-send-with-reply-set-notify.patch',                  1 },
-        { 'capi-dbus-add-support-for-custom-marshalling.patch',              1 },
-        { 'capi-dbus-block-acquire-io-path-on-send.patch',                   1 },
-        { 'capi-dbus-correct-dbus-connection-block-pending-call.patch',      1 },
-        { 'capi-dbus-send-with-reply-and-block-delete-reply-on-error.patch', 1 },
+        'capi-dbus-1-pc.patch',
+        'capi-dbus-add-send-with-reply-set-notify.patch',
+        'capi-dbus-add-support-for-custom-marshalling.patch',
+        'capi-dbus-block-acquire-io-path-on-send.patch',
+        'capi-dbus-correct-dbus-connection-block-pending-call.patch',
+        'capi-dbus-send-with-reply-and-block-delete-reply-on-error.patch',
     },
     build  = {
         type = 'gnu',

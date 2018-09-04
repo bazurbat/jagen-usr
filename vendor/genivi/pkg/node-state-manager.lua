@@ -5,8 +5,8 @@ return {
         tag      = '2.0.0',
     },
     patches = {
-        { 'node-state-manager-2.0.0-fix-libsystemd-pc-filename.patch', 1 },
-        { 'node-state-manager-2.0.0-mkdir-before-gdbus-codegen.patch', 1 },
+        'node-state-manager-2.0.0-fix-libsystemd-pc-filename.patch',
+        'node-state-manager-2.0.0-mkdir-before-gdbus-codegen.patch',
     },
     build = {
         type = 'gnu',

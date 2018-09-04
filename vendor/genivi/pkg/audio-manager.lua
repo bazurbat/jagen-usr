@@ -5,7 +5,7 @@ return {
         tag      = '7.5',
     },
     patches = {
-        { 'audio-manager-pass-all-LDFLAGS-to-linker-when-building-wrappers.patch', 1 }
+        'audio-manager-pass-all-LDFLAGS-to-linker-when-building-wrappers.patch'
     },
     build = {
         type = 'cmake',

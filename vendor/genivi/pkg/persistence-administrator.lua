@@ -5,7 +5,7 @@ return {
         tag      = '1.0.5'
     },
     patches = {
-        { 'persistence-administrator-1.0.5-fix-libsystemd-pc-filename.patch', 1 },
+        'persistence-administrator-1.0.5-fix-libsystemd-pc-filename.patch'
     },
     build = {
         type = 'gnu',
