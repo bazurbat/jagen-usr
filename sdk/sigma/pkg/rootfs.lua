@@ -1,7 +1,8 @@
 return {
     source = {
         type     = 'git',
-        location = 'git@bitbucket.org:art-system/sigma-rootfs.git'
+        location = 'git@bitbucket.org:art-system/sigma-rootfs.git',
+        name     = 'sigma-rootfs'
     },
     build = {
         type = 'make',

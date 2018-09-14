@@ -2,6 +2,7 @@ return {
     source = {
         type     = 'git',
         location = 'git@bitbucket.org:art-system/sigma-mrua.git',
+        name     = 'sigma-mrua',
         branch   = '3.11.3'
     },
     build = {
