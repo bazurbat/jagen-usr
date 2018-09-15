@@ -49,7 +49,7 @@ package { 'kernel', 'target',
     { 'image',
         requires = {
             'loop-aes',
-            'ralink',
+            -- 'ralink',
             'rootfs',
         }
     }
@@ -83,7 +83,7 @@ package { 'rootfs', 'target',
             'loop-aes',
             'mrua',
             'ntpclient',
-            'ralink',
+            -- 'ralink',
             'util-linux',
             'utils',
         }
