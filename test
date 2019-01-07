@@ -4,7 +4,7 @@ set -eu
 
 lib=$(dirname "$0")/../jagen-lib
 usr=$(dirname "$0")
-products="ast-sigma-firmware ast-hi-linux genivi"
+products="ast-sigma-firmware ast-hi-linux genivi android-integration"
 
 lib=$(cd "$lib" && pwd -P)
 usr=$(cd "$usr" && pwd -P)
@@ -53,6 +53,7 @@ case $1 in
         setup_product ast-sigma-firmware vendor/ast sdk/sigma product/ast-sigma-firmware
         setup_product ast-hi-linux vendor/ast sdk/hi-linux product/ast-hi-linux
         setup_product genivi vendor/genivi product/genivi
+        setup_product android-integration product/android-integration
         ;;
     refresh)
         for product in $products; do
