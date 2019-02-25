@@ -4,7 +4,7 @@ set -eu
 
 lib=$(dirname "$0")/../jagen-lib
 usr=$(dirname "$0")
-products="ast-sigma-firmware ast-hi-linux genivi android-integration"
+products="ast-sigma-firmware ast-hi-linux genivi android-integration rust test"
 
 lib=$(cd "$lib" && pwd -P)
 usr=$(cd "$usr" && pwd -P)
@@ -15,10 +15,11 @@ setup_product() {
     echo "setup $product"
     (
         mkdir -p "$product"; cd "$product"
-        "$jagen_dir/init" -L "$usr" "$lib" "$@"
+        "$jagen_dir/init" -L "$usr" "$lib" "$@" || true
         cp -a "build/build.ninja" "build/build.ninja.orig"
         cp -a "include" "include.orig"
-        . ./env.sh
+        ./jagen refresh >refresh_out.orig 2>&1
+        # . ./env.sh
         # jagen list packages -ad > list.packages.txt
         # cp -a list.packages.txt list.packages.txt.orig
     )
@@ -27,8 +28,7 @@ setup_product() {
 refresh_product() {
     (
         cd $1
-        . ./env.sh
-        jagen refresh
+        ./jagen refresh >refresh_out.txt 2>&1 || true
         # jagen list packages -ad > list.packages.txt
     )
 }
@@ -38,6 +38,7 @@ check_product() {
     (
         printf "===== %-20s =====\n" "$name"
         cd "$name"
+        diff -u refresh_out.txt refresh_out.orig || true
         diff -u build/build.ninja.orig build/build.ninja || true
         diff -u include.orig include || true
         # if [ -f list.packages.txt.orig ] && [ -f list.packages.txt ]; then
@@ -54,6 +55,8 @@ case $1 in
         setup_product ast-hi-linux vendor/ast sdk/hi-linux product/ast-hi-linux
         setup_product genivi vendor/genivi product/genivi
         setup_product android-integration product/android-integration
+        setup_product rust product/rust
+        setup_product test product/test/base product/test/middle product/test/top
         ;;
     refresh)
         for product in $products; do
