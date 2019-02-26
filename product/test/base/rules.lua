@@ -30,3 +30,34 @@ package { 'toolchain-override', 'target',
 package { 'toolchain-override', 'target',
     build = { toolchain = 'toolchain-override-bbb' }
 }
+
+-- checks
+
+package { 'build-without-config',
+    build = 'cmake'
+}
+
+package { 'build-insource',
+    build = {
+        type = 'gnu',
+        in_source = true,
+        toolchain = 'some-toolchain'
+    }
+}
+package { 'build-insource', 'host' }
+package { 'build-insource', 'target' }
+
+package { 'build-notoolchain', 'target',
+    build = 'gnu'
+}
+
+package { 'uses-undefined',
+    uses = 'undefined'
+}
+
+-- should this be an error?
+package { 'check-usages-used' }
+package { 'check-usages-using', 'host',
+    build = 'gnu',
+    uses = 'check-usages-used'
+}
