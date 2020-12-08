@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/files.git',
+        location = 'git@bitbucket.org:bazurbat/ast-files.git',
         name     = 'files'
     }
 }

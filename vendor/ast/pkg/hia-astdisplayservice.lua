@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/hia-astdisplayservice.git',
+        location = 'git@bitbucket.org:bazurbat/hia-astdisplayservice.git',
     },
     build = {
         type = 'cmake'

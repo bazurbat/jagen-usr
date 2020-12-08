@@ -1,7 +1,7 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/linux.git',
-        branch   = 'ast50'
+        location = 'git@bitbucket.org:bazurbat/ast-linux.git',
+        branch   = 'ast50',
+        name     = 'linux'
     }
 }

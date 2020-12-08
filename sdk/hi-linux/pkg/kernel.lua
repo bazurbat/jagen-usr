@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/hi-kernel.git',
+        location = 'git@bitbucket.org:bazurbat/hi-kernel.git',
         name     = 'hi-kernel'
     },
     build = {

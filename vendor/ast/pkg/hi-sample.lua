@@ -1,6 +1,5 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/hi-sample.git',
+        location = 'git@bitbucket.org:bazurbat/hi-sample.git',
     }
 }

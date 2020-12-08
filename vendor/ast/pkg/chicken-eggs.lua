@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/chicken-eggs.git',
+        location = 'git@bitbucket.org:bazurbat/chicken-eggs.git',
         branch   = 'release'
     },
     build = {

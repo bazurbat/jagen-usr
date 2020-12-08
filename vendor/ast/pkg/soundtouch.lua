@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/soundtouch.git',
+        location = 'git@bitbucket.org:bazurbat/ast-soundtouch.git',
     },
     build = {
         type = 'gnu',

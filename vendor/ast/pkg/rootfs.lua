@@ -1,6 +1,6 @@
 return {
     source = {
-        type     = 'git',
-        location = 'git@bitbucket.org:art-system/rootfs.git',
+        location = 'git@bitbucket.org:bazurbat/ast-rootfs.git',
+        name     = 'rootfs',
     }
 }

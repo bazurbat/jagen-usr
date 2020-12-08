@@ -1,7 +1,7 @@
 return {
     source = {
-        type     = 'hg',
-        location = 'ssh://hg@bitbucket.org/art-system/karaoke-player',
+        location = 'git@bitbucket.org:bazurbat/karaoke-player.git',
+        branch   = 'hisi'
     },
     build = {
         type = 'cmake'

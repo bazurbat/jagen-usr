@@ -1,7 +1,6 @@
 return {
     source = {
-        type     = 'hg',
-        location = 'ssh://hg@bitbucket.org/art-system/astindex',
+        location = 'git@bitbucket.org:bazurbat/astindex.git',
         dir      = '$jagen_src_dir/karaoke-player/source/astindex'
     }
 }
