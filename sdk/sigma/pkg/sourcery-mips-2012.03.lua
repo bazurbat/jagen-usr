@@ -9,10 +9,9 @@ return {
     },
     build = {
         arch   = 'mips',
-        -- Sigma tools require this to be started from 'mipsel' or break mysteriously
-        system = 'mipsel-linux-gnu',
+        system = 'mips-linux-gnu',
         cpu    = '24kf',
-        cflags = '-march=24kf -mtune=24kf -Wa,-mips32r2',
+        cflags = '-EL -march=24kf -mtune=24kf -Wa,-mips32r2',
         toolchain = false
     },
     install = 'toolchain'

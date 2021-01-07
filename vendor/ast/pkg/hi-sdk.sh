@@ -5,6 +5,8 @@ jagen_pkg_patch() {
 }
 
 jagen_pkg_configure() {
+    sed -Ei "s/^CFG_HI_TOOLCHAINS_NAME=.*$/CFG_HI_TOOLCHAINS_NAME=$pkg_build_system/" cfg.mak
+
     pkg_link "${kernel_dir:?}" \
         "$pkg_source_dir/source/kernel/linux-3.4.y"
 
